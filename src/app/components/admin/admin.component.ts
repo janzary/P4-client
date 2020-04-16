@@ -192,7 +192,7 @@ export class AdminComponent implements OnInit {
   let fd = new FormData();
    fd.append('newImage', this.selectedFile, this.selectedFile.name);
     this.productsService.uploadImage(fd).subscribe((res) => {
-      this.msg += ` ${res.message} `;
+      this.msg += `, ${res.message} `;
       this.fadeOutMsg();
       console.log(res)
     }, err => console.log(err));
