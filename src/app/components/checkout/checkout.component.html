@@ -1,0 +1,136 @@
+<div class="logout">
+    <button id="outBtn" (click)="signOut()" title="LOGOUT"> <span class="glyphicon glyphicon-log-out"></span></button>
+</div>
+<div *ngIf="successMsg" class="successMsg"> Order submitted successfully!<button id="downloadBtn"
+        (click)="downloadReceipt()">download receipt</button> &nbsp; <a routerLink="/shop">Back to shop</a></div>
+<div class="cartList">
+    <br>
+    <p style="text-align:center;">Cart#:{{cart?.id}}</p>
+    <hr>
+    <table>
+        <tr class="header">
+            <th colspan="2">Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+        </tr>
+        <tr *ngFor="let item of cartItemsList">
+            <td> <img src="http://localhost:3000/product-images/{{ item?.image }}"
+                    style="height: 60px; border-radius: 2px;"></td>
+            <td> {{ item?.product_name }} </td>
+            <td> {{ item?.price | currency }}</td>
+            <td> {{ item?.quantity }} </td>
+            <td> {{ item?.total_price | currency}} </td>
+        </tr>
+    </table>
+    <hr>
+    <p style="text-align: right;">CART TOTAL: {{cartTotal | currency}}</p>
+</div>
+
+<div class="checkoutForm">
+    <h3>CHECKOUT</h3>
+    <hr>
+    <br>
+    <form [formGroup]="checkoutForm" (ngSubmit)="validateCCNum()">
+        <div class="detSection">
+            <h5>Shipping Details:</h5>
+            <div class="formFields">
+                <label for="firstName">First Name</label> <br>
+                <input type="text" formControlName="firstName">
+                <div
+                    *ngIf="checkoutForm.controls.firstName?.invalid && (checkoutForm.controls.firstName.dirty || checkoutForm.controls.firstName.touched)">
+                    <div *ngIf="checkoutForm.controls.firstName.errors.minlength" class="alert alert-danger"
+                        role="alert">Name is
+                        required
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="formFields">
+                <label for="lastName">Last Name</label> <br>
+                <input type="text" formControlName="lastName">
+                <div
+                    *ngIf="checkoutForm.controls.lastName?.invalid && (checkoutForm.controls.lastName.dirty || checkoutForm.controls.lastName.touched)">
+                    <div *ngIf="checkoutForm.controls.lastName.errors.minlength" class="alert alert-danger"
+                        role="alert">Name is
+                        required
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="formFields">
+                <label for="street">Street</label> <br>
+                <input type="text" formControlName="street">
+                <div
+                    *ngIf="checkoutForm.controls.street?.invalid && (checkoutForm.controls.street.dirty || checkoutForm.controls.street.touched)">
+                    <div *ngIf="checkoutForm.controls.street.errors.minlength" class="alert alert-danger" role="alert">
+                        Street field is field
+                        required</div>
+                </div>
+            </div>
+            <br>
+            <div class="formFields">
+                <label for="city">City</label> <br>
+                <input type="text" formControlName="city">
+                <div
+                    *ngIf="checkoutForm.controls.city?.invalid && (checkoutForm.controls.city.dirty || checkoutForm.controls.city.touched)">
+                    <div *ngIf="checkoutForm.controls.city.errors.minlength" class="alert alert-danger" role="alert">
+                        City field is required
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="formFields">
+                <mat-form-field color="accent" appearance="outline">
+                    <mat-label for="shipDate"
+                        style="padding-left:15px; margin-left: 30px; font-size: 15px; color: black; font-family: 'Raleway', sans-serif; letter-spacing: 2px; ">Delivery
+                        Date</mat-label> <br><br>
+                    <input
+                        style="color:white; font-weight:bold; margin-left: 60px; font-size: 15px; font-family: 'Raleway', sans-serif; letter-spacing: 2px;"
+                        formControlName="shipDate" 
+                        matInput   
+                        [matDatepicker]="datePicker" 
+                        [min]="minDate"
+                        [max]="maxDate"
+                        [matDatepickerFilter]="dateFilter">
+                    <mat-datepicker-toggle [for]="datePicker" matSuffix>
+                        <mat-icon matDatepickerToggleIcon>
+                            mouse
+                        </mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #datePicker></mat-datepicker>
+                    <div  style="margin-left: 40px; text-align: center;" *ngIf="!successMsg && checkoutForm.controls.shipDate?.invalid && (checkoutForm.controls.shipDate.dirty || checkoutForm.controls.shipDate.touched)"
+                        class="alert alert-danger" role="alert">Please select a valid delivery date from the calendar
+                    </div>
+                    <div style="margin-left: 40px; text-align: center;" *ngIf="unavailable" class="alert alert-danger" role="alert">
+                        No more deliveries available for selected day. Please select another day.
+                    </div>
+                   
+                </mat-form-field>
+            </div>
+            <!--    <div class="formFields">
+                <label for="shipDate">Choose Delivery Date</label> <br>
+                <input type="date" formControlName="shipDate">
+                <div *ngIf="!successMsg && checkoutForm.controls.shipDate?.invalid && (checkoutForm.controls.shipDate.dirty || checkoutForm.controls.shipDate.touched)"
+                    class="alert alert-danger" role="alert">Please select a delivery date</div>
+            </div> -->
+        </div>
+        <br>
+        <div class="detSection">
+            <h5>Payment Details:</h5>
+
+            <div class="formFields">
+                <label for="ccNum">Credit Card Number</label> <br>
+                <input type="text" formControlName="ccNum">
+                <div *ngIf="!ccIsValid" class="alert alert-warning" role="alert">{{ccInvalidMsg}}</div>
+            </div>
+        </div>
+        <br>
+        <div class="formFields">
+            <button type="submit" value="submit" id="submitBtn"
+                [disabled]="!checkoutForm.valid || cartItemsList.length == 0 || unavailable == true">
+                SUBMIT ORDER
+            </button>
+        </div>
+    </form>
+</div>

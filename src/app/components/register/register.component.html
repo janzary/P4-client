@@ -1,0 +1,61 @@
+<div class="registerCard">
+    <h2>Register</h2>
+    <div id="err" *ngIf="userExists">{{errMsg | uppercase}}
+        <br>
+        <a routerLink="/login">Return to Login Page</a>
+    </div>
+    <hr>
+    <br>
+    <form [formGroup]="registerForm" (ngSubmit)="checkIfUser()">
+        <div class="formFields">
+            <label for="TZ">Teudat Zehut/ ID Number</label> <br>
+            <input id="TZ" type="password" formControlName="TZ" autofocus>
+        </div>
+        <div
+            *ngIf="registerForm.controls.TZ?.invalid && (registerForm.controls.TZ.dirty || registerForm.controls.TZ.touched)">
+            <div *ngIf="registerForm.controls.TZ.errors.minlength || registerForm.controls.TZ.errors.maxlength" class="alert alert-danger">TZ must be 9 numbers.
+            </div>
+        </div>
+        <br>
+        <div class="formFields">
+            <label for="email">Username</label> <br>
+            <input type="email" formControlName="email" placeholder="Please enter a valid email">
+        </div>
+        <div
+            *ngIf="registerForm.controls.email?.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)">
+            <div *ngIf="registerForm.controls.email.errors.email" class="alert alert-danger">Valid email required
+                for username.</div>
+        </div>
+        <br>
+        <div class="formFields">
+            <label for="password">Password</label> <br>
+            <input type="password" formControlName="password">
+        </div>
+        <div
+            *ngIf="registerForm.controls.password?.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">
+            <div *ngIf="registerForm.controls.password.errors.minlength" class="alert alert-danger">Password must be
+                at
+                least 6
+                characters.</div>
+        </div>
+        <br>
+        <div class="formFields">
+            <label for="confirmPassword">Retype Password</label> <br>
+            <input type="password" formControlName="confirmPassword">
+        </div>
+        <div
+            *ngIf="registerForm.controls.confirmPassword?.invalid && (registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.touched)">
+            <div *ngIf="registerForm.controls.confirmPassword.errors.mustMatch" class="alert alert-danger">Passwords
+                must match!</div>
+        </div>
+        <br>
+        <hr>
+        <div class="formFields">
+            <button type="submit" value="Next" [disabled]="!registerForm.valid">
+                 Next
+                    <span class="glyphicon glyphicon-menu-right"> </span>
+                
+            </button>
+        </div>
+    </form>
+</div>

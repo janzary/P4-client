@@ -1,0 +1,121 @@
+.sideBarPanel {
+    margin-right: 20px;
+    margin-top: 5px;
+    height: 100vh;
+    width: 510px; 
+    left: 0;
+    border-right: 3px solid rgb(131, 131, 196);
+    background-color: white;
+  /*  overflow-x: hidden;  Disable horizontal scroll */
+    position: fixed; 
+    top: 180px;
+    z-index: 1;
+}
+
+h4{
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color:  rgb(131, 131, 196);
+}
+
+.toggle{
+    position: relative;
+    top: 180px;
+    z-index: 20;
+    transition-property: margin-left;
+    transition-duration: 3s;
+    transition-delay: .35s;
+}
+
+#toggleBtn{
+    width: 35px; 
+    margin-top: 5px;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid rgb(131, 131, 196);
+}
+
+.hamburger{
+    width: 25px;
+    height: 5px; 
+    margin: 3px -3px;
+    color: white;
+    background-color: rgb(131, 131, 196);
+}
+
+.collapse.width {
+    transition-property: width;
+    transition-duration: 3s;
+    
+}
+
+#cartIcon{
+    border-radius: 3px;
+    padding: 5px;
+    background-color: white;
+}
+
+table{
+    font-family: 'Raleway', sans-serif;
+    color: #868686;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+
+th {
+    padding: 5px;
+    text-align: center;
+  }
+
+tr{
+    text-align: center;
+    border-top: 1px  solid #868686;
+    border-bottom: 1px  solid #868686;
+    text-align: center;
+}
+
+.header:hover{
+    background-color: transparent;
+}
+
+tr:hover {
+    background-color: #e7e7e7;
+}
+
+
+td{
+ padding: 5px;
+ text-align: center;
+}
+
+#checkoutBtn{
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    border: 2px solid #3b3b3b; 
+    border-radius: 5px; 
+    background-color: transparent;
+}
+
+#checkoutBtn:hover{
+    background-color:#3b3b3b;
+    color: white;
+}
+
+#removeBtn{
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: 2px solid rgb(131, 131, 196);
+    color: rgb(131, 131, 196);
+    border-radius: 5px; 
+    background-color: transparent;
+}
+
+#removeBtn:hover{
+    background-color:rgb(131, 131, 196);
+    color: white;
+}

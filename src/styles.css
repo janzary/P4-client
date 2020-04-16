@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+    margin: 0;
+    padding: 0;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    /*align-content: stretch;
+    align-items: stretch;
+    align-content: stretch;
+    align-items: stretch;*/
+    height: 100vh;
+}
+

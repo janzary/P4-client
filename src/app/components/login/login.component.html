@@ -1,0 +1,53 @@
+<div class="loginCard">
+
+    <div *ngIf="isLoggedIn && !isAdmin">
+        <h2>{{msg | titlecase}}</h2>
+        <hr>
+        <div style="display: flex; justify-content: center;">
+           <a routerLink="/shop" style="color:white;"> <button id="shopBtn"> SHOP </button></a>
+            <br><br>
+            <button id="outBtn" (click)="signOut()">LOGOUT</button></div>
+        <br>
+        <div class="cartMsg">{{ previousCartMsg }} 
+            <p *ngIf="prevCart">{{prevShopDate | date:'mediumDate'}} </p>
+        </div>
+    </div>
+
+    <div *ngIf="!isLoggedIn">
+        <h2 [ngStyle]="{'margin-bottom': loginFailed ? '2px' : '50px'}">Login</h2>
+        <p id="err" *ngIf="loginFailed">{{errMsg | uppercase}}</p>
+        <hr>
+        <br>
+        <form [formGroup]="loginForm" (ngSubmit)="verifyUser()">
+            <div class="formFields">
+                <label for="email">USERNAME</label>
+                <input id="email" type="email" formControlName="email" autofocus placeholder="Enter a valid email" (keydown)="removeErrMsg()">
+            </div>
+            <div
+                *ngIf="loginForm.controls.email?.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)">
+                <div *ngIf="loginForm.controls.email.errors.email" class="alert alert-danger">Valid email required for
+                    username.</div>
+            </div>
+            <br>
+            <div class="formFields">
+                <label for="password">PASSWORD</label>
+                <input id="password" type="password" formControlName="password" (keydown)="removeErrMsg()"> 
+            </div>
+            <div
+                *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+                <div *ngIf="loginForm.controls.password.errors.minlength" class="alert alert-danger">Password must be at
+                    least 6
+                    characters.</div>
+            </div>
+            <br>
+            <hr><br>
+            <div class="formFields">
+                <button type="submit" value="login" [disabled]="!loginForm.valid">
+                    Login
+                </button>
+                <a routerLink="/register"><button>Register</button></a>
+            </div>
+        </form>
+    </div>
+
+</div>

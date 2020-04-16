@@ -1,0 +1,155 @@
+<div class="adminBanner">
+    <h3><img src="../assets/images/icon2.png" style="height: 60px; width: 60px;">The Plant Based Grocer - Admin Portal
+    </h3>
+</div>
+<nav>
+    <div><button id="outBtn" (click)="signOut()" title="LOGOUT"> <span
+                class="glyphicon glyphicon-log-out"></span></button>
+    </div>
+    <div><button class="categoryBtn" title="all categories"><img class="categoryIcon"
+                src="../assets/images/groceries.png" alt="ALL" (click)="displayAllProducts()"></button></div>
+    <div class="categories" *ngFor="let c of categories">
+        <button class="categoryBtn" title="{{c.category_name}} (id: {{c.id}})" id={{c.id}}
+            (click)="displayOneCategory($event)">
+            <img class="categoryIcon" src="../assets/images/{{c.id}}.jpg" alt="{{c.category_name}}">
+        </button>
+    </div>
+</nav>
+
+<div class="adminForm">
+    <div class="fixedTitle">
+        <h2>MANAGE PRODUCTS
+            <hr>
+        </h2>
+        <div class="formBtns">
+            <button title="add product" (click)="displayAddForm()"><i
+                    class="glyphicon glyphicon-plus"></i></button><span style="margin: 5px;"></span>
+            <button title="update product" (click)="displayUpdateForm()"> <i
+                    class="glyphicon glyphicon-wrench"></i></button>
+        </div>
+        <div *ngIf="msg" [ngClass] ="fadeOutMsg()">
+            <p  style="color:teal; border: 1px solid teal; margin: 5px; background-color: rgb(53, 52, 52);">
+                {{msg | uppercase}}!</p>
+        </div>
+        <br>
+    </div>
+    <br>
+    <form *ngIf="addSelected" [formGroup]="addForm" class="form" 
+     (submit)="add()" action="/upload" method='POST' enctype="multipart/form-data">
+        <br>
+        <label for="product">PRODUCT NAME: </label><br>
+        <input type="text" name="productName" [(ngModel)]="product_name" formControlName="productName">
+        <hr>
+        <label for="categories">CATEGORY: </label><br>
+        <select id="categories" name="category" [(ngModel)]="category_id" formControlName="category">
+            <option value="1">Fruits</option>
+            <option value="2">Vegetables</option>
+            <option value="3">Grains</option>
+            <option value="4">Legumes</option>
+            <option value="5">Plant Milk</option>
+            <option value="6">Nuts & Seeds</option>
+            <option value="7">Frozen Produce</option>
+        </select><br>
+        <hr>
+        <label for="price">PRICE: </label><br>
+        <input type="text" name="price" [(ngModel)]="price" formControlName="price">
+        <hr>
+        <div class="imgUpload">
+            <label for="image">IMAGE: </label><br>
+            <input type="file" name="newImage" accept="image/*" (change)="getFileName($event)" formControlName="image">
+        </div>
+        <hr>
+        <div class="formBtns">
+            <button type="submit" class="addBtn" >Add Product</button>
+        </div>
+        <br>
+    </form>
+
+
+   
+    <form *ngIf="updateSelected" [formGroup]="updateForm" class="form" 
+         action="/upload" method='POST' enctype="multipart/form-data" (submit)="update()">
+        <br>
+        <div *ngIf="updateSelected">
+            <label for="product_id">PRODUCT ID: </label>
+            <input type="text" name="productId" [(ngModel)]="product_id" formControlName="productId">
+            <hr>
+        </div>
+        <label for="product">PRODUCT NAME: </label><br>
+        <input type="text" name="productName" [(ngModel)]="product_name" formControlName="productName">
+        <hr>
+        <label for="categories">CATEGORY: </label><br>
+        <select id="categories" name="category" [(ngModel)]="category_id" formControlName="category">
+            <option value="1">Fruits</option>
+            <option value="2">Vegetables</option>
+            <option value="3">Grains</option>
+            <option value="4">Legumes</option>
+            <option value="5">Plant Milk</option>
+            <option value="6">Nuts & Seeds</option>
+            <option value="7">Frozen Produce</option>
+        </select><br>
+        <hr>
+        <label for="price">PRICE: </label><br>
+        <input type="text" name="price" [(ngModel)]="price" formControlName="price">
+        <hr>
+        <div class="imgUpload">
+            <label for="image">IMAGE: </label><br>
+            <input type="file" name="newImage" accept="image/*" (change)="getFileName($event)" formControlName="image">
+        </div>
+        <hr>
+        <div class="formBtns">
+            <button  type="submit" class="updateBtn" >Update</button>
+        </div>
+        <br>
+    </form>
+
+</div>
+
+<label for="search" class="search">
+    <input type="search" id="search" autofocus placeholder="search by product name" [(ngModel)]="searchInput"
+        (ngModelChange)="unclickSearch()" (keyup.enter)="triggerSearch()"><button class="searchBtn"
+        (click)="triggerSearch()" [disabled]="!inputVal"><span class="glyphicon glyphicon-search"></span></button>
+</label>
+
+
+<div *ngIf="products && !searchClicked" class="products" style="margin-left:515px">
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Category Name</th>
+            <th>Category ID</th>
+            <th>Price</th>
+        </tr>
+        <tr *ngFor="let p of products">
+            <td><img src="http://localhost:3000/product-images/{{p.image}}" class="productImg"></td>
+            <td>{{p.product_id}}</td>
+            <td> {{p.product_name}}</td>
+            <td>{{p.category_name}}</td>
+            <td>{{p.category_id}}</td>
+            <td>{{p.price | currency}}</td>
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="products && searchClicked" class="products" style="margin-left:515px">
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Category Name</th>
+            <th>Category ID</th>
+            <th>Price</th>
+        </tr>
+        <tr *ngFor="let p of products | search: searchInput as result">
+            <td><img src="http://localhost:3000/product-images/{{p.image}}" class="productImg"></td>
+            <td>{{p.product_id}}</td>
+            <td> {{p.product_name}}</td>
+            <td>{{p.category_name}}</td>
+            <td>{{p.category_id}}</td>
+            <td>{{p.price | currency}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,16 @@
+<div class="modalContainer" *ngIf="!addClicked">
+    <div class="modal">
+        <div *ngFor="let info of selectedProduct">
+            <p><img src="http://localhost:3000/product-images/{{info.image}}" class="productImg"></p>
+            <p>{{info.product_name | uppercase}}</p>
+            <p>{{info.price | currency}}</p>
+        </div>
+        <div class="buttons">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="25" [(ngModel)]="quantity">
+            <button id="addBtn" class="glyphicon glyphicon-shopping-cart" title="ADD TO CART" (click)="addToCart()">
+            </button>
+
+        </div>
+    </div>
+</div>

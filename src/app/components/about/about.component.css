@@ -1,0 +1,68 @@
+.aboutPanel, .shopInfo{
+    position: relative;
+    top: 120px;
+    bottom: 10px;
+    min-height: 75vh;
+    border-radius: 5px;    
+    margin: 20px;
+    padding: 5px;
+    background: linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(82, 174, 211, 0.6));
+    text-align: center;
+    color: white;
+    z-index: 0;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 1px;
+}
+
+
+.aboutPanel{
+    width: 35%;
+    min-width: 270px;
+}
+
+.shopInfo{
+    width: 20%;
+    float: right; 
+}
+
+.total{
+    border: 1px solid white;
+    text-align: center;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+img{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+}
+
+h2{
+    color: black;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+}
+
+div{
+    margin: 5px;
+    padding: 50px;
+    font-size: 20px;
+}
+
+p{
+    font-size: 16px;
+    margin: 5px;
+    color: teal;
+    font-weight: bold;
+}
+
+a{
+    padding: 3px;
+    margin: 3px;
+    border-radius: 5px;
+    color:teal;
+    border: 1px solid teal;
+    text-decoration: none;
+}

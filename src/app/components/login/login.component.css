@@ -1,0 +1,96 @@
+.loginCard {
+    position: relative;
+    top: 120px;
+    bottom: 10px;
+    float: left;
+    border-radius: 5px;
+    margin: 20px;
+    width: 35%;
+    min-width: 270px;
+    min-height: 75vh; 
+    padding: 5px;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;  
+    background: linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(82, 174, 211, 0.6));
+    z-index: 0;
+}
+
+.formFields, h2 {
+    text-align: center;
+    padding: 5px;
+}
+
+
+input {
+    margin-left: 5px;
+    height: 30px;
+    width: 80%;
+    letter-spacing: 2px;
+}
+
+#outBtn{
+    border: 2px solid black;
+    background-color: transparent;
+    color: black;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    
+}
+
+button{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 3px;
+    width: 250px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid teal;
+    color: teal;
+    font-weight: bolder;
+    letter-spacing: 2px;letter-spacing: 2px;
+}
+
+#shopBtn{
+    color: white;
+    border: 2px solid white;
+    background-color: transparent;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-weight: 500;
+ }
+ 
+
+a {
+    color: teal;
+    text-decoration: none;
+}
+
+#err{
+    text-align: center;
+    padding: 2px;
+    border: 2px solid orangered;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: orangered;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.cartMsg{
+    margin-top: 100px;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    font-size: 18px;
+    border-radius: 5px;
+}

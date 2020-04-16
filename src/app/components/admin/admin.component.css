@@ -1,0 +1,244 @@
+.adminBanner{
+    z-index: 20;
+    background-color: rgb(53, 52, 52);
+    border: 16px solid;
+    border-image-source: linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6));
+    border-image-slice: 1; 
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 4px;
+    position: fixed;
+    width: 100%;
+}
+
+div.adminBanner{
+    height: 120px;
+}
+
+h3{
+    text-align: center;
+}
+
+
+
+.adminForm {
+    width:40%;
+    height: 100%; 
+    padding: 5px;
+  /*  border-right: 5px solid rgb(131, 131, 196); */
+    background-color: rgb(53, 52, 52);
+    z-index: 1;
+    position: relative;
+    top: 190px;
+    left: 0;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 1px;
+    color:  rgb(131, 131, 196);
+    display: block;
+    float: left;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.fixedTitle{
+  /*  border-right: 5px solid rgb(131, 131, 196); */
+    position: fixed;
+    height: 95px;
+    width: 40%;
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
+    background-color: rgb(53, 52, 52);
+    top: 190px;
+    left: 0;
+    z-index: 10;
+}
+
+input{
+    margin: 5px;
+    display: block;
+}
+
+
+.updateBtn:hover, .addBtn:hover{
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+nav{
+    text-align: center;
+    background-color: rgb(185, 190, 199);
+    position: fixed;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 5px;
+    display: block;
+    height: 90px;
+    z-index: 3;
+    border-bottom: 1px solid grey;
+}
+
+#outBtn{
+    position: fixed;
+    float: right;
+    right: 5px;
+    top: 125px;
+    text-align: center;
+    border-bottom: 5px solid rgb(131, 131, 196);
+    border-left: 5px solid teal;
+    border-top: 5px solid teal;
+    border-right: 5px solid  rgba(42, 27, 161, 0.6);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 5px;
+  
+}
+
+.categoryBtn{
+    float: right;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: rgb(53, 52, 52);
+    position: relative;
+    margin: 5px;
+    top: 22px;
+    right: 250px;
+    border-style: solid;
+    padding: 2px;
+    z-index: 5;
+    
+}
+
+.categoryIcon{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    line-height: 0;
+    border: 1px solid rgb(53, 52, 52);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding: 2px;
+}
+
+ .categoryBtn:hover, #outBtn:hover{
+    box-shadow: 6px 6px .5em rgb(53, 52, 52);
+    height: 51px;
+    width: 51px;
+    margin: 4.5px;
+}
+
+
+  .productImg {
+    height: 60px; 
+    text-align: center;
+    border-radius: 5px;   
+}
+
+
+.search{
+    position: absolute;
+    top: 200px;
+    left: 60%;
+    display: inline-block;
+}
+
+#search{
+    display: inline-block;
+}
+
+table{
+    position: absolute;
+    top: 270px;
+    left: 45%;
+    background-color: rgb(59, 55, 55);
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+}
+
+td, th{
+    text-align: center;
+    padding: 7px;
+    color: grey;
+}
+
+td{
+    border: 1px solid grey;
+    font-size: 16px;
+}
+
+th{
+    color: rgb(59, 55, 55);
+ /* background-color: rgb(57, 128, 131);*/
+    background-color: rgb(185, 190, 199);
+    border: 1px solid white;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+
+.form{
+    position: relative;
+    top: 110px;
+    border: 1px solid white;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.09);
+    text-align: center;
+}
+
+.form input, select{
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    letter-spacing: 2px;
+    height: 25px;
+}
+
+
+label{
+    font-weight: normal;
+    letter-spacing: 5px;
+    color: black;
+    font-size: 14px;
+   font-weight: bold;
+}
+
+.formBtns{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.updateBtn, .addBtn{
+    text-align: center;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 2px solid rgb(131, 131, 196);
+    color: rgb(131, 131, 196);
+    width: 250px;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.imgUpload{
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px 100px 0px 100px;
+    border-radius: 5px;
+}
+
+.form hr{
+    border-top: 1px solid black;
+}

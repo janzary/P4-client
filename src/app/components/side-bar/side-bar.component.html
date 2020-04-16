@@ -1,0 +1,60 @@
+<div class="toggle" [ngStyle]="{'margin-left': getCollapseClicked()}">
+    <button (click)="timesClicked()" title="collapse/expand" id="sidebarCollapse" id="toggleBtn" data-toggle="collapse"
+        data-target="#collapsePnl" aria-controls="collapsePnl">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+    </button>
+</div>
+<div class="sideBarPanel collapse width show" id="collapsePnl">
+    <h4 style="text-align: center;">
+        <span id="cartIcon" class="glyphicon glyphicon-shopping-cart">
+        </span>
+        SHOPPING CART
+    </h4>
+    <br>
+    <div *ngIf="isLoggedIn && addedItem.length > 0">
+        <h6 style="padding: 5px;  vertical-align: middle; text-align: center; background-color:#3b3b3b; color:white; height: 25px; font-family: 'Raleway', sans-serif;
+            letter-spacing: 2px; font-size: 14px;">
+             <span>Cart#:{{cart?.id}} &nbsp;&nbsp;&nbsp; Cart created on:
+                {{cart?.cart_date | date}} 
+            </span></h6> 
+    </div>
+    <div *ngIf="addedItem.length > 0" style="overflow: auto;  height: 400px; ">
+        <table>
+            <tr class="header">
+                <th></th>
+                <th colspan="2">Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th colspan="2">Update Quantity</th>
+                <th>Total Price</th>
+            </tr>
+            <tr *ngFor="let item of addedItem">
+                <div #itemId style="display:none;"> {{item.item_id}}</div>
+                <td><button title="delete item" (click)="deleteItem(itemId.innerHTML)"><i
+                            class="glyphicon glyphicon-remove"></i></button></td>
+                <td> <img src="http://localhost:3000/product-images/{{ item?.image }}"
+                        style="height: 60px; border-radius: 2px;"></td>
+                <td> {{ item?.product_name }} </td>
+                <td> {{ item?.price | currency }}</td>
+                <td> {{ item?.quantity }} </td>
+                <td><input #itemQnty type="number" name="quantity" min="1" max="25" maxlength="2" style="width:40px;">
+                </td>
+                <td><button (click)="updateQuantity(itemQnty.value, itemId.innerHTML)" title="update"> <i
+                            class="glyphicon glyphicon-refresh"></i></button></td>
+                <td> {{ item?.total_price | currency}} </td>
+            </tr>
+        </table>
+        <br>
+        <div style="margin: 5px;">
+            <p style=" color:#3b3b3b; font-family: 'Raleway', sans-serif;
+            letter-spacing: 2px; font-weight: bold; font-size: 14px; float: right;">Total: {{cartTotal | currency}}
+            </p>
+            <button id="removeBtn" (click)="removeAllItems()">Remove All Items</button>
+            <hr>
+            <a routerLink="/checkout" style="color:#3b3b3b; font-weight: bold; text-decoration: none;">
+                <button id="checkoutBtn">Checkout</button></a>
+        </div>
+    </div>
+</div>

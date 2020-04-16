@@ -1,0 +1,55 @@
+<div class="registerCard">
+    <h2>Register - Step 2</h2>
+    <hr>
+    <br>
+    <form [formGroup]="registerForm2" (ngSubmit)="registerUser()">
+        <div class="formFields">
+            <label for="city">City</label> <br>
+            <input type="text" formControlName="city" autofocus>
+        </div>
+        <div
+            *ngIf="registerForm2.controls.city?.invalid && (registerForm2.controls.city.dirty || registerForm2.controls.city.touched)">
+            <div *ngIf="registerForm2.controls.city.errors.minlength" class="alert alert-danger">City field is required
+            </div>
+        </div>
+        <br>
+        <div class="formFields">
+            <label for="street">Street</label> <br>
+            <input type="text" formControlName="street">
+        </div>
+        <div
+            *ngIf="registerForm2.controls.street?.invalid && (registerForm2.controls.street.dirty || registerForm2.controls.street.touched)">
+            <div *ngIf="registerForm2.controls.street.errors.minlength" class="alert alert-danger">Street field is field
+                required</div>
+        </div>
+        <br>
+        <div class="formFields">
+            <label for="firstName">First Name</label> <br>
+            <input type="text" formControlName="firstName">
+        </div>
+        <div
+            *ngIf="registerForm2.controls.firstName?.invalid && (registerForm2.controls.firstName.dirty || registerForm2.controls.firstName.touched)">
+            <div *ngIf="registerForm2.controls.firstName.errors.minlength" class="alert alert-danger">Valid name is
+                required
+            </div>
+        </div>
+        <br>
+        <div class="formFields">
+            <label for="lastName">Last Name</label> <br>
+            <input type="text" formControlName="lastName">
+        </div>
+        <div
+            *ngIf="registerForm2.controls.lastName?.invalid && (registerForm2.controls.lastName.dirty || registerForm2.controls.lastName.touched)">
+            <div *ngIf="registerForm2.controls.lastName.errors.minlength" class="alert alert-danger">Valid name is
+                required
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div class="formFields">
+            <button type="submit" value="submit" [disabled]="!registerForm2.valid">
+               SUBMIT
+            </button>
+        </div>
+    </form>
+</div>
