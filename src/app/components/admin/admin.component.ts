@@ -77,7 +77,7 @@ export class AdminComponent implements OnInit {
  public fadeOutMsg() {
     setTimeout( () => {
            this.msg = null;
-        }, 4000);
+        }, 3000);
    }
 
 
